@@ -1,3 +1,12 @@
+/* Create a cinematic dark ocean hero section
+   with light beams from top,
+   glass effect cards,
+   smooth fade-in animation,
+   premium travel vibe */
+   
+
+
+
 :root {
   --section-rotate: 9vw;
 }
@@ -1322,4 +1331,16 @@ body {
   box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.15);
   -webkit-transform: translateY(-2px);
   transform: translateY(-2px);
+}
+/* ===== Card overlay tones (keep image, change blur) ===== */
+.card.tone-blue .card__picture-overlay{
+  background-image: linear-gradient(to right bottom, rgba(72,140,255,0.75), rgba(120,70,255,0.55)) !important;
+}
+
+.card.tone-orange .card__picture-overlay{
+  background-image: linear-gradient(to right bottom, rgba(255,141,56,0.75), rgba(255,63,120,0.55)) !important;
+}
+
+.card.tone-green .card__picture-overlay{
+  background-image: linear-gradient(to right bottom, rgba(125,213,111,0.75), rgba(40,180,135,0.55)) !important;
 }

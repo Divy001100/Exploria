@@ -1,8 +1,8 @@
 {
 	"info": {
 		"_postman_id": "460e30fe-57f6-4d86-8515-611a5a134b96",
-		"name": "Natours",
-		"description": "The Natours APi contains endpoints for Tours, Users, and Reviews.",
+		"name": "Exploria",
+		"description": "The Exploria APi contains endpoints for Tours, Users, and Reviews.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -834,7 +834,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"name\": \"Jonas Schmedtmann\",\n\t\"role\": \"admin\"\n}"
+							"raw": "{\n\t\"name\": \"Divyanshu Singh\",\n\t\"role\": \"admin\"\n}"
 						},
 						"url": {
 							"raw": "{{URL}}api/v1/users/updateMe",

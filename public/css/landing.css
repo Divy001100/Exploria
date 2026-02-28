@@ -1,0 +1,322 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap');
+
+/* ===== Landing page (nn-inspired, cinematic ocean) ===== */
+
+:root{
+  --ocean-1:#050814;
+  --ocean-2:#060c1f;
+  --beam:#b7f3ff;
+  --glass: rgba(255,255,255,0.08);
+  --glass-border: rgba(255,255,255,0.12);
+}
+
+/* Make landing full-bleed even though body has padding: 3rem in your main CSS */
+.landing-hero,
+.landing-section {
+  margin-left: -3rem;
+  margin-right: -3rem;
+}
+
+/* HERO */
+.landing-hero{
+  position: relative;
+  min-height: calc(100vh - 8rem); /* header is 8rem */
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding: 10rem 3rem 8rem; /* IMPORTANT: top padding creates the gap from header */
+  overflow:hidden;
+  background: linear-gradient(180deg, var(--ocean-1), var(--ocean-2));
+}
+
+/* Hero background image + overlays */
+.landing-hero__bg{
+  position:absolute;
+  inset:0;
+  background-image:
+    linear-gradient(180deg, rgba(5,8,20,0.65) 0%, rgba(5,8,20,0.85) 55%, rgba(5,8,20,0.95) 100%),
+    url('/img/landing/hero.jpg');
+  background-size: cover;
+  background-position: center;
+  transform: scale(1.04);
+  filter: saturate(1.1) contrast(1.05);
+}
+
+/* Light beams from top */
+.landing-hero::before{
+  content:"";
+  position:absolute;
+  inset:-20%;
+  background:
+    radial-gradient(900px 380px at 25% 10%, rgba(183,243,255,0.18), transparent 60%),
+    radial-gradient(760px 320px at 70% 12%, rgba(183,243,255,0.14), transparent 58%),
+    radial-gradient(680px 320px at 45% 0%, rgba(125,213,111,0.10), transparent 60%);
+  filter: blur(18px);
+  opacity: 0.95;
+  animation: beams 10s ease-in-out infinite;
+  pointer-events:none;
+}
+
+@keyframes beams{
+  0%{ transform: translate(-1%, -1%) scale(1.02); }
+  50%{ transform: translate(1%, 1%) scale(1.05); }
+  100%{ transform: translate(-1%, -1%) scale(1.02); }
+}
+
+/* Content box (glass) */
+/* .landing-hero__content{
+  position: relative;
+  z-index: 2;
+  text-align:center;
+  max-width: 90rem;
+  padding: 4.2rem 4.2rem 4.5rem;
+  border-radius: 2.2rem;
+  background: linear-gradient(180deg, rgba(255,255,255,0.10), rgba(255,255,255,0.06));
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 30px 90px rgba(0,0,0,0.55);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+} */
+
+.landing-hero__logo{
+  height: 4.2rem;
+  margin-bottom: 2.2rem;
+  filter: drop-shadow(0 14px 30px rgba(0,0,0,0.55));
+}
+
+.landing-hero__title{
+  margin-bottom: 2.6rem;
+}
+
+.landing-hero__title-main{
+  display:block;
+  font-size: 7.2rem;
+  letter-spacing: 1.2rem;
+  font-weight: 700;
+  color: #fff;
+  text-transform: uppercase;
+}
+
+.landing-hero__title-sub{
+  display:block;
+  margin-top: 1.2rem;
+  font-size: 2.1rem;
+  letter-spacing: 0.4rem;
+  font-weight: 300;
+  color: rgba(255,255,255,0.85);
+  text-transform: uppercase;
+}
+
+/* Sections */
+.landing-section{
+  padding: 10rem 3rem;
+}
+
+.landing-container{
+  max-width: 120rem;
+  margin: 0 auto;
+}
+
+.landing-heading{
+  font-size: 2.4rem;
+  text-transform: uppercase;
+  font-weight: 800;
+  letter-spacing: 0.12rem;
+  text-align:center;
+  margin-bottom: 5.5rem;
+  background-image: linear-gradient(90deg, #7dd56f, #28b487);
+  -webkit-background-clip:text;
+  color: transparent;
+}
+
+.landing-subheading{
+  font-size: 1.6rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12rem;
+  margin-bottom: 1.2rem;
+  color: #333;
+}
+
+.landing-paragraph{
+  font-size: 1.6rem;
+  color: #666;
+  margin-bottom: 2.4rem;
+}
+
+.landing-link{
+  font-size: 1.6rem;
+  color: #55c57a;
+  text-decoration:none;
+  border-bottom: 1px solid rgba(85,197,122,0.6);
+  padding-bottom: 2px;
+}
+
+.landing-grid-2{
+  display:grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 6rem;
+  align-items:center;
+}
+
+.landing-section--about{
+  background: #f7f7f7;
+}
+
+/* Composition photos */
+.landing-composition{
+  position:relative;
+  height: 34rem;
+}
+
+.landing-composition__photo{
+  position:absolute;
+  width: 55%;
+  border-radius: 1.6rem;
+  box-shadow: 0 22px 60px rgba(0,0,0,0.20);
+  transition: transform 250ms ease, box-shadow 250ms ease;
+}
+
+.landing-composition__photo--p1{ left: 0; top: 0; }
+.landing-composition__photo--p2{ right: 0; top: 6rem; }
+.landing-composition__photo--p3{ left: 18%; top: 14rem; width: 62%; }
+
+.landing-composition__photo:hover{
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 28px 80px rgba(0,0,0,0.26);
+  z-index: 5;
+}
+
+/* Features section (dark ocean + beams) */
+.landing-section--features{
+  position:relative;
+  background: linear-gradient(180deg, #050814, #07122a);
+  color: #fff;
+  overflow:hidden;
+}
+
+.landing-beams{
+  position:absolute;
+  inset:-30%;
+  background:
+    radial-gradient(900px 360px at 30% 10%, rgba(183,243,255,0.14), transparent 60%),
+    radial-gradient(700px 300px at 80% 20%, rgba(125,213,111,0.10), transparent 60%),
+    radial-gradient(700px 340px at 55% 100%, rgba(40,180,135,0.10), transparent 60%);
+  filter: blur(18px);
+  opacity: 0.9;
+  animation: beams 10s ease-in-out infinite;
+  pointer-events:none;
+}
+
+.landing-features{
+  position:relative;
+  z-index:2;
+  display:grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2.6rem;
+}
+
+.landing-feature{
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.10);
+  border-radius: 2rem;
+  padding: 3rem 2.6rem;
+  box-shadow: 0 24px 70px rgba(0,0,0,0.35);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: transform 250ms ease, box-shadow 250ms ease;
+}
+
+.landing-feature:hover{
+  transform: translateY(-6px);
+  box-shadow: 0 30px 90px rgba(0,0,0,0.45);
+}
+
+.landing-feature__icon{
+  height: 3.2rem;
+  width: 3.2rem;
+  fill: #7dd56f;
+  margin-bottom: 1.6rem;
+}
+
+.landing-feature__title{
+  font-size: 1.4rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12rem;
+  margin-bottom: 1rem;
+}
+
+.landing-feature__text{
+  font-size: 1.5rem;
+  color: rgba(255,255,255,0.82);
+}
+
+/* Tours + CTA keep light theme so your existing cards still look clean */
+.landing-section--tours{
+  background:#f7f7f7;
+}
+
+.landing-section--cta{
+  background:#f7f7f7;
+}
+
+.landing-cta{
+  border-radius: 2.2rem;
+  background: #fff;
+  padding: 5.2rem 4rem;
+  box-shadow: 0 30px 90px rgba(0,0,0,0.10);
+  border: 1px solid rgba(0,0,0,0.06);
+  text-align:center;
+}
+
+.landing-cta__actions{
+  display:flex;
+  gap: 1.6rem;
+  justify-content:center;
+  margin-top: 2rem;
+}
+
+.landing-btn-ghost{
+  background: transparent !important;
+  border: 1px solid rgba(85,197,122,0.5) !important;
+  color: #55c57a !important;
+}
+
+.landing-btn-ghost:hover{
+  background: rgba(85,197,122,0.08) !important;
+}
+
+/* ===== Animations (no JS required) ===== */
+[data-animate="up"]{
+  opacity: 0;
+  transform: translateY(14px);
+  animation: fadeUp 650ms ease forwards;
+}
+
+.landing-hero__content[data-animate="up"]{ animation-delay: 120ms; }
+.landing-heading[data-animate="up"]{ animation-delay: 80ms; }
+.landing-text[data-animate="up"]{ animation-delay: 120ms; }
+.landing-composition[data-animate="up"]{ animation-delay: 180ms; }
+.landing-feature[data-animate="up"]{ animation-delay: 120ms; }
+.card-container[data-animate="up"]{ animation-delay: 120ms; }
+.landing-cta[data-animate="up"]{ animation-delay: 120ms; }
+
+@keyframes fadeUp{
+  to{
+    opacity:1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive */
+@media (max-width: 75em){
+  .landing-features{ grid-template-columns: repeat(2, 1fr); }
+  .landing-grid-2{ grid-template-columns: 1fr; }
+  .landing-composition{ height: 38rem; }
+}
+
+@media (max-width: 37.5em){
+  .landing-hero{ padding-top: 9rem; }
+  .landing-hero__title-main{ font-size: 5.2rem; letter-spacing: 0.7rem; }
+  .landing-hero__content{ padding: 3.6rem 2.4rem; }
+  .landing-features{ grid-template-columns: 1fr; }
+}
